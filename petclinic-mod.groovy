@@ -9,7 +9,6 @@ node {
             sh 'mvn clean package'
         
             
-            step([$class: 'JUnitResultArchiver', testResults: 'target/surefire-reports/*xml'])
     
     notify('Success')
     } catch (err) {
@@ -17,6 +16,7 @@ node {
         currentBuild.result = 'FAILURE'
     }
             stage 'archiving artifacts'
+            step([$class: 'JUnitResultArchiver', testResults: 'target/surefire-reports/*xml'])
             archiveArtifacts "target/*war"
 }
 
