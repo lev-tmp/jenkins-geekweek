@@ -9,7 +9,7 @@ node {
             sh 'mvn clean package'
         
             stage 'archiving artifacts'
-            archiveArtifacts "target/*jar"
+            archiveArtifacts "target/*war"
             
             step([$class: 'JUnitResultArchiver', testResults: 'target/surefire-reports/*xml'])
     
