@@ -5,9 +5,7 @@ node {
         git changelog: false, poll: false, url: 'https://github.com/lev-tmp/jenkins2-course-spring-petclinic.git'
     
         stage 'compiling, test, packaging'
-        def project_path='/'
         
-        dir(project_path) {
             sh 'mvn clean package'
         
             stage 'archiving artifacts'
@@ -15,7 +13,6 @@ node {
             
             step([$class: 'JUnitResultArchiver', testResults: 'target/surefire-reports/*xml'])
     
-        }
     notify('Success')
     } catch (err) {
         notify("Error ${err}")
