@@ -1,8 +1,9 @@
 node {
     notify('Started')
     try {
-        stage 'checkout'
-        git changelog: false, poll: false, url: 'https://github.com/lev-tmp/jenkins2-course-spring-boot.git'
+        stage 'checkout' {
+            git changelog: false, poll: false, url: 'https://github.com/lev-tmp/jenkins2-course-spring-boot.git'
+        }
     
         stage 'compiling, test, packaging'
         def project_path='spring-boot-samples/spring-boot-sample-atmosphere'
