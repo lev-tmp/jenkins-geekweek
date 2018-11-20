@@ -6,7 +6,7 @@ node('builder-1') {
 
     // pull dependencies from npm
     // on windows use: bat 'npm install'
-    sh 'npm install'
+    sh 'npm install' 
 
     // stash code & dependencies to expedite subsequent testing
     // and ensure same code & dependencies are used throughout the pipeline
